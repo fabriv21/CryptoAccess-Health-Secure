@@ -1,0 +1,32 @@
+CRYPTOACCESS HEALTH SECURE 2.0
+ARQUITECTURA CRIPTOGRÁFICA IMPLEMENTADA
+
+1. DATOS CLÍNICOS
+Los campos sensibles se cifran mediante AES-256-GCM antes de guardarse en SQLite.
+
+2. EXPEDIENTES CLÍNICOS
+Cada versión se normaliza en una estructura canónica.
+Se calcula SHA-384.
+Cuando el médico firma, se genera una firma RSA-3072-PSS con SHA-384.
+La versión firmada queda bloqueada.
+
+3. DOCUMENTOS
+Se genera una clave AES-256 aleatoria por documento.
+El contenido se cifra con AES-256-GCM.
+La clave AES se encapsula con RSA-3072-OAEP y SHA-384.
+El contenido original se resume mediante SHA-384.
+El contenido se firma mediante RSA-3072-PSS y SHA-384.
+Todos los componentes se guardan en un paquete .cahs.
+
+4. GESTIÓN DE CLAVES
+Las claves tienen Key ID, estado, fecha y huella pública SHA-384.
+La rotación conserva claves antiguas para documentos históricos.
+
+5. AUDITORÍA
+Cada evento incluye usuario, rol, acción, entidad, resultado, severidad,
+estación, metadatos, hash anterior y hash SHA-384 del evento.
+La aplicación puede verificar toda la cadena.
+
+6. AUTENTICACIÓN
+Las contraseñas se protegen mediante Argon2id.
+El segundo factor utiliza TOTP compatible con Authy.

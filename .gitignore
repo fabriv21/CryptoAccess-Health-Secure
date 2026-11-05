@@ -1,0 +1,52 @@
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local virtual environments
+venv/
+.venv/
+env/
+
+# Runtime data and sensitive material
+/data/
+/exports/
+/reports/
+/secure_documents/
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+*.cahs
+*.cahbak
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.log
+*.bin
+
+# Credentials and local configurations
+.env
+.env.*
+!.env.example
+secrets/
+private_keys/
+*.secret
+
+# Build artifacts and editor settings
+build/
+dist/
+*.spec
+*.exe
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
